@@ -8,8 +8,8 @@ div.hero-unit{
 	padding-left:10px;
 	padding-top:10px;
 	padding-right:10px;
-	margin-top:20px;
-	margin-bottom:60px;
+	margin-top:75px;
+	margin-bottom:20px;
 	margin-left:180px;
 	height: 298px;
 	background-color: #fff;
@@ -29,13 +29,14 @@ div.well.well-large{
 	margin-left:180px;
 }
 
+
+
 #message-button{
 	margin-left:px;
+	float: right;
 }
 
-#message-name{
-	margin-left:180px;
-}
+
 
 #whant{
 	margin: auto;
@@ -65,22 +66,34 @@ div.well.well-large{
 	float: left;
 	margin-right: 32px;
 }
+
+#chat-name{
+	margin-right: 10px;
+}
+
+.btn.btn-default{
+	float:right;
+	margin-left: 180px;
+}
+
 #head-img{
 	margin-right:10px;
 	margin-left:11px;
 }
 
-.sent-message-area{
+#sent-message-area{
 	width: 49%;
 	margin-left: 10px;
 	margin-top:0px;
 	border-radius: 4px; 
-	height: 80px;
 	margin-bottom:10px;
 	padding:20px;
 	box-shadow: 0.4em 0.4em 6px rgba(122,122,122,0.5);
-	background-color: #eee;
+	background-color: #337ab7;
+	color: #fff;
+	word-wrap: break-word;
 	
+    max-width: 100%;
 }
 
 .received-message-area{
@@ -93,6 +106,7 @@ div.well.well-large{
 	padding:20px;
 	box-shadow: 0.4em 0.4em 6px rgba(122,122,122,0.5);
 	background-color: #eee;
+	overflow: scroll;
 }
 
 div.name-panel{
@@ -100,12 +114,21 @@ div.name-panel{
 	margin:auto;
 }
 
+div.wrap{
+height:100%;
+}
 .information-panel{
-	margin-top:40px;
+	margin-top:20px;
 	height: 168px;
+	width:180px;
+	float:left;
 }
 
 .bottom-panel{
 	height: 200px;
 }
 
+#input-name{
+	width: 150px;
+	float: left;
+}

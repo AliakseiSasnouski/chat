@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/java.js"></script>
 </head>
-<body>
+<body onload="run();">
 
 	<div class = "container" >
 	
@@ -25,36 +25,48 @@
 				<a href="chat.html">Chat</a>
 				
 			</li>
-			<li>
-				<a href="change.html">Change The Name</a>
-			</li>
+			
 			
 		</ul>
 		
 		<div class = "information-panel">
-			<img id = "chat-avatar" src = "images/avatar.png" width = "148px" height = "148px"/>
 			<h1><small>Name</small></h1>
+			<img id = "chat-avatar" src = "images/avatar.png" width = "148px" height = "148px"/>
+			
 		</div>
 		
 			<div id = "jumbotron">
-				<div class = "received-message-area">
+				<!--<div class = "received-message-area">
 					
-				</div>
+				</div>-->
 				<div id = "sent">
-				
+					
 				</div>
 				
 			</div>
 		
 		<div class = "bottom-panel">
+			
+			<h1><small id = "chat-name">Name</small></h1>
+			
 			<img id = "chat-avatar"src = "images/avatar.png" width = "148px" height = "148px"/>
-			<h1 id = "message-name"><small>Name</small></h1>
-			<input id = "message" type="text" class="form-control" placeholder = "Write text here...">
 			<button id = "message-button" type="submit" class="btn btn-primary" onclick="myFunction();">Send Message</button>
-		</div>
+			<textarea id = "message" type="text" class="form-control" placeholder = "Write text here..."></textarea>
+			<hr>
+			<p>Change Name</p>
+			<input id = "input-name" type="text" class="form-control" placeholder="Enter name...">
+			 <button  type="submit" class="btn btn-default" onclick = "changeName();">Change Name</button>
+			
+  		</div>
 		
 		<hr>
 		<div class="footer text-center">AliakseiSasnouski &copy; 2015</div>
 	</div>
+	<script type="text/javascript">
+		function divPosition()
+		{    
+			document.getElementById("sent-message-area").style.left = screen.availWidth/2 - document.getElementById("sent-message-area").offsetWidth/2 + "px";
+		}
+	</script>
 </body>
 </html> 
