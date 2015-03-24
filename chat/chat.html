@@ -10,11 +10,14 @@
 <body onload="run();">
 
 	<div class = "container" >
-	
+		<div class = "change-name">
+			<p><small>Change My Name.</small></p>
+			<input id = "input-chat-name" type="text" class="form-control" placeholder="Enter name...">
+			<button  type="submit" class="btn btn-default" onclick = "changeName();">Change</button>
+		</div>
+		
 		<div class="page-header">
-			
-				<h1><img id = "head-img" src = "images/chat.png" width = "40px" height = "40px"/>Let's Talk<small><br>online</small></h1>
-			
+				<h1><img id = "head-img" src = "images/chat.png" width = "40px" height = "40px"/>Let's Talk<small><br>online</small></h1>				
 		</div>
 		
 		<ul class="nav nav-pills">
@@ -24,44 +27,37 @@
 			<li class="active">
 				<a href="chat.html">Chat</a>
 				
-			</li>
-			
-			
+			</li>			
 		</ul>
 		
 		<div class = "information-panel">
-			<h1><small>Name</small></h1>
-			<img id = "chat-avatar" src = "images/avatar.png" width = "148px" height = "148px"/>
-			
+			<p class = "center"><img src = "images/avatar.png" width = "148px" height = "148px"/></p>
+			<h1><small><p class = "center">Name</p></small></h1>
 		</div>
 		
-			<div id = "jumbotron">
-				<!--<div class = "received-message-area">
-					
-				</div>-->
-				<div id = "sent">
+		<div class="dialog-panel">
+			<div id = "message-history">
+				<div id = "received">
 					
 				</div>
-				
+				<div class = "sent">
+					
+				</div>
 			</div>
-		
-		<div class = "bottom-panel">
-			
-			<h1><small id = "chat-name">Name</small></h1>
-			
-			<img id = "chat-avatar"src = "images/avatar.png" width = "148px" height = "148px"/>
-			<button id = "message-button" type="submit" class="btn btn-primary" onclick="myFunction();">Send Message</button>
-			<textarea id = "message" type="text" class="form-control" placeholder = "Write text here..."></textarea>
+		<div id = "line">
 			<hr>
-			<p>Change Name</p>
-			<input id = "input-name" type="text" class="form-control" placeholder="Enter name...">
-			 <button  type="submit" class="btn btn-default" onclick = "changeName();">Change Name</button>
-			
+			<p><strong id = "chat-name"> Name</strong>, <small>write your message here.</small></p>
+		</div>
+		<div class = "bottom-panel">
+			<button id = "message-button" type="submit" class="btn btn-primary" >Send Message</button>
+			<textarea id = "message" type="text" class="form-control" placeholder = "Write text here..."></textarea>			
   		</div>
+		</div>
 		
 		<hr>
 		<div class="footer text-center">AliakseiSasnouski &copy; 2015</div>
 	</div>
+	
 	<script type="text/javascript">
 		function divPosition()
 		{    

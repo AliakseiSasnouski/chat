@@ -1,65 +1,56 @@
-div.hero-unit{
-	height: 200px;
-	margin-top:80px;
-	margin-bottom:40px;
+.change-name{
+	margin-top: 40px;
+	float: right;
 }
 
-#jumbotron{
+#input-chat-name{
+	width: 180px;
+	float: left;
+}
+
+.center{
+	text-align: center;
+}
+
+.content{
+	margin: auto;
+	width: 570px;
+	margin-bottom: 60px;
+}
+
+.btn.btn-default{
+	float:right;
+	margin-left: 10px;
+}
+
+#message-history{
 	padding-left:10px;
 	padding-top:10px;
 	padding-right:10px;
 	margin-top:75px;
-	margin-bottom:20px;
 	margin-left:180px;
 	height: 298px;
-	background-color: #fff;
-	box-shadow: inset 0 0 2px #777; 
-	overflow: scroll;
-}
-
-div.well.well-large{
-	width:50%;
-	margin:auto;
+	background-color: #fff; 
+	overflow-y: scroll;
+	border-radius: 10px;
+	box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 }
 
 #message{
-	width:35%;
-	height:40px;
+	width:70%;
+	height:90px;
 	margin-bottom:20px;
 	margin-left:180px;
 }
-
-
 
 #message-button{
 	margin-left:px;
 	float: right;
 }
 
-
-
-#whant{
-	margin: auto;
-	width: 570px;
-	margin-bottom: 60px;
-}
-#start-button{
-	margin-left: 255px;
-	margin-top: 20px;
-}
-
-#name{
-	width:200px;
-	margin-top: 20px;
-	margin-bottom: 10px;
-}
-
-#name-button{
-	margin-left: 40px;
-}
-
-#avatar{
-	margin-left: 16px;;
+#line{
+	width: 85%;
+	margin-left:180px;
 }
 
 #chat-avatar{
@@ -67,14 +58,10 @@ div.well.well-large{
 	margin-right: 32px;
 }
 
-#chat-name{
+.chat-name{
 	margin-right: 10px;
 }
 
-.btn.btn-default{
-	float:right;
-	margin-left: 180px;
-}
 
 #head-img{
 	margin-right:10px;
@@ -82,18 +69,28 @@ div.well.well-large{
 }
 
 #sent-message-area{
-	width: 49%;
 	margin-left: 10px;
 	margin-top:0px;
 	border-radius: 4px; 
 	margin-bottom:10px;
 	padding:20px;
-	box-shadow: 0.4em 0.4em 6px rgba(122,122,122,0.5);
 	background-color: #337ab7;
 	color: #fff;
 	word-wrap: break-word;
-	
     max-width: 100%;
+	white-space: pre;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, .2);
+}
+}
+
+#received{
+	width: 50%;
+	float: left;
+}
+
+.sent{
+	width: 50%;
+	float: right;
 }
 
 .received-message-area{
@@ -109,26 +106,25 @@ div.well.well-large{
 	overflow: scroll;
 }
 
-div.name-panel{
-	width: 200px;
-	margin:auto;
-}
 
-div.wrap{
-height:100%;
-}
 .information-panel{
-	margin-top:20px;
+	margin-top:75px;
 	height: 168px;
 	width:180px;
 	float:left;
 }
+
 
 .bottom-panel{
 	height: 200px;
 }
 
 #input-name{
-	width: 150px;
+	width: 180px;
 	float: left;
+}
+
+.change-name{
+	margin-top: 40px;
+	float: right;
 }

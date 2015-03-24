@@ -1,102 +1,93 @@
-function myFunction() {
-	
-	var c = document.getElementById("jumbotron");
-    var textArea = document.createElement('div');
-	 
-	textArea.id = 'sent-message-area';
-	var text = document.getElementById('message');
-	var name = document.getElementById('chat-name');
-	textArea.innerHTML = name.value + ": " + text.value;
-    c.appendChild(textArea);
-	text.value = '';
-	//NewTeg();
-}
+var messageList = [];
+var userName = '';
 
-function NewTeg() {
-    var div=document.getElementById('sent-message-area');
-    var button=document.createElement("button");
-    
-    button.type = "button";
-    button.className = "btn btn-default navbar-btn";
-    button.value = "Delete";
-   
-    div.appendChild(button);
-}
-
-
-function changeName(){
-	var name = document.getElementById('input-name');
-	var text = name.value;
-	name.value = '';
-	var changeName = document.getElementById('chat-name');
-	changeName.innerHTML = text;
+function changeName() {
+	var newName = document.getElementById('input-chat-name');
+	userName = newName.value;
+	newName.value = '';
+	var chatName = document.getElementById('chat-name');
+	chatName.innerHTML = userName;
 	
 }
+var uniqueId = function() {
+	var date = Date.now();
+	var random = Math.random() * Math.random();
 
-var theMessage = function(text, name) {
+	return Math.floor(date * random).toString();
+};
+var theMessage = function(text,name) {
 	return {
-		description: text,
-		name: text,
+		username: name,
+		message: text,
 		id: uniqueId()
 	};
 };
 
-var messageList = [];
-
-function run(){
-	var appContainer = document.getElementsByClassName('jumbotron')[0];
-
-	var allMessage = restore() || [ theMessage('Сделать разметку', name),
-			theMessage('Выучить JavaScript', name),
-			theMessage('Написать чат !', name)
-		];
-
-	createAllMessage(allMessage);
-	output(messageList);
-	updateCounter();
+function run() {
+	var dialogPanel = document.getElementsByClassName('dialog-panel')[0];
+	dialogPanel.addEventListener('click', delegateEvent);
+	var allMessages = restore();
+	createAllMessages(allMessages);
 }
 
-function createAllMessage(allMessage) {
-	for(var i = 0; i < allMessage.length; i++)
-		addMessage(allMessage[i]);
+function createAllMessages(allMessages) {
+	for(var i = 0; i < allMessages.length; i++)
+		addMessage(allMessages[i]);
 }
+
+function delegateEvent(evtObj) {
+		if(evtObj.type === 'click' && evtObj.target.classList.contains('btn-primary'))
+			onSendMessageButtonClick(userName);
+}
+
+function onSendMessageButtonClick(userName) {
+	if(userName == '')
+		userName = "Name";
+	var textMessage = document.getElementById('message');
+	var newMessage = theMessage(textMessage.value, userName);
+	if(textMessage.value == '')
+		return;
+	addMessage(newMessage);
+	textMessage.value = '';
+	store(messageList);
+}
+
+
 
 function addMessage(message) {
-	var item = createItem(message);
-	var items = document.getElementById("jumbotron");[0];
-
-	taskList.push(message);
-	items.appendChild(item);
+	var tmpMessage = createMessage(message);
+	var sentMessages = document.getElementsByClassName('sent')[0];
+	messageList.push(message);
+	sentMessages.appendChild(tmpMessage);
 }
 
-function createItem(task){
-		
-	var changeName = document.getElementById('chat-name');
-	changeName.innerHTML = GLOBAL;
-	debugger;
+function createMessage(message) {
 	var temp = document.createElement('div');
-	var htmlAsText = '<div class="item strikeout" data-task-id="идентификатор">'+
-	'<input type="checkbox">описание задачи</div>';
-
+	var htmlAsText = '<div id="sent-message-area" mes-id="идентификатор"> user name: Message text </div><br>';
 	temp.innerHTML = htmlAsText;
-	updateItem(temp.firstChild, task);
-
+	update(temp.firstChild, message);
 	return temp.firstChild;
 }
 
-function output(value){
-	var output = document.getElementById('output');
-
-	output.innerText = "var taskList = " + JSON.stringify(value, null, 2) + ";";
+function update(divItem, message) {
+	divItem.setAttribute('mes-id', message.id);
+	divItem.lastChild.textContent = message.username+": "+ message.message;
 }
 
+function store(listToSave) {
+	if(typeof(Storage) == "undefined") {
+		alert('localStorage is not accessible');
+		return;
+	}
+
+	localStorage.setItem("History", JSON.stringify(listToSave));
+}
 function restore() {
 	if(typeof(Storage) == "undefined") {
 		alert('localStorage is not accessible');
 		return;
 	}
 
-	var item = localStorage.getItem("TODOs taskList");
-
+	var item = localStorage.getItem("History");
 	return item && JSON.parse(item);
 }
