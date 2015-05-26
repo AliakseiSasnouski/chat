@@ -25,30 +25,33 @@ public class MessageExchange {
         return jsonObject.toJSONString();
     }
 
-    public String getClientSendMessageRequest(Message message) {
-        return message.toJSONString();
-    }
-
-    public Message getClientMessage(InputStream inputStream) throws ParseException {
+    public Message getClientMessage(InputStream inputStream) throws IOException, ParseException {
         JSONObject json = getJSONObject(inputStreamToString(inputStream));
         return Message.parseMessage((JSONObject) json);
+    }
+
+    public String getErrorMessage(String text) {
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("error", text);
+
+        return jsonObject.toJSONString();
     }
 
     public JSONObject getJSONObject(String json) throws ParseException {
         return (JSONObject) jsonParser.parse(json.trim());
     }
 
-    public String inputStreamToString(InputStream in) {
+    public String inputStreamToString(InputStream in) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
         int length = 0;
-        try {
-            while ((length = in.read(buffer)) != -1) {
-                baos.write(buffer, 0, length);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        while ((length = in.read(buffer)) != -1) {
+            baos.write(buffer, 0, length);
         }
+
+        System.out.println("Input stream " + new String(baos.toByteArray()));
         return new String(baos.toByteArray());
     }
 }

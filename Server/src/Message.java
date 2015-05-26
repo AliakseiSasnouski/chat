@@ -9,7 +9,7 @@ public class Message implements JSONAware{
     private String userName;
     private int id;
     private String text;
-    private String time;
+    //private String time;
     private boolean deleted=false;
     private boolean changed=false;
 
@@ -19,7 +19,7 @@ public class Message implements JSONAware{
         this.text = "";
         DateFormat df = DateFormat.getTimeInstance(DateFormat.DEFAULT);
         Date currentDate = new Date();
-        time = df.format(currentDate);
+        //time = df.format(currentDate);
     }
 
     public Message(String text, String userName) {
@@ -28,7 +28,7 @@ public class Message implements JSONAware{
         this.id = -1;
         DateFormat df = DateFormat.getTimeInstance(DateFormat.DEFAULT);
         Date currentDate = new Date();
-        time = df.format(currentDate);
+       // time = df.format(currentDate);
     }
 
     public Message(int id, String userName, String text) {
@@ -37,7 +37,7 @@ public class Message implements JSONAware{
         this.text = text;
         DateFormat df = DateFormat.getTimeInstance(DateFormat.DEFAULT);
         Date currentDate = new Date();
-        time = df.format(currentDate);
+        //time = df.format(currentDate);
     }
 
     public String getUserName() {
@@ -64,13 +64,6 @@ public class Message implements JSONAware{
         this.text = text;
     }
 
-    public String getTime () {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     public boolean isDeleted() {
         return deleted;
@@ -94,9 +87,9 @@ public class Message implements JSONAware{
     }
     public static Message parseMessage(JSONObject obj) {
         Message mes = new Message();
-        mes.setUserName((String) obj.get("user"));
+        mes.setUserName((String) obj.get("username"));
         mes.setText((String) obj.get("message"));
-        mes.setTime((String) obj.get("time"));
+        //mes.setTime((String) obj.get("time"));
         if(obj.get("id") != null) {
             mes.setId(Integer.parseInt(obj.get("id").toString()));
         }
@@ -104,15 +97,15 @@ public class Message implements JSONAware{
     }
     @Override
     public String toString() {
-        return "[" + this.time + "] "+ this.userName +" : " + this.text;
+        return  this.userName +" : " + this.text;
     }
     @Override
     public String toJSONString() {
         JSONObject obj = new JSONObject();
-        obj.put("user", userName);
+        obj.put("username", userName);
         obj.put("message", text);
         obj.put("id", id);
-        obj.put("time", time);
+        //obj.put("time", time);
         return obj.toString();
     }
     @Override

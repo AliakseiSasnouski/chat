@@ -12,12 +12,16 @@
 	<div class = "container" >
 		<div class = "change-name">
 			<p><small>Change My Name.</small></p>
-			<input id = "input-chat-name" type="text" class="form-control" placeholder="Enter name...">
-			<button  type="submit" class="btn btn-default" onclick = "changeName();">Change</button>
+			<input id = "input-chat-name" type="text" class="form-control" placeholder="Enter name..." onkeydown = "if(event.keyCode==13)
+				{
+					changeName();
+					
+				;}">
+			<button  type="submit" class="btn btn-default" onclick = "changeName(); ">Change</button>
 		</div>
 		
 		<div class="page-header">
-				<h1><img id = "head-img" src = "images/chat.png" width = "40px" height = "40px"/>Let's Talk<small><br>online</small></h1>				
+				<h1><img id = "head-img" src = "images/chat.png" width = "40px" height = "40px"/>Let's Talk<small><br><div id = "server-connect">online</div></small></h1>				
 		</div>
 		
 		<ul class="nav nav-pills">
@@ -32,7 +36,7 @@
 		
 		<div class = "information-panel">
 			<p class = "center"><img src = "images/avatar.png" width = "148px" height = "148px"/></p>
-			<h1><small><p class = "center">Name</p></small></h1>
+			<h1><small><p class = "center" id = "avatar-name">Name</p></small></h1>
 		</div>
 		
 		<div class="dialog-panel">
@@ -50,7 +54,11 @@
 		</div>
 		<div class = "bottom-panel">
 			<button id = "message-button" type="submit" class="btn btn-primary" >Send Message</button>
-			<textarea id = "message" type="text" class="form-control" placeholder = "Write text here..."></textarea>			
+			<textarea id = "message" type="text" class="form-control" placeholder = "Write text here..." onkeydown = "if(event.keyCode==13)
+				{
+					onSendMessageButton();
+					
+				;}"></textarea>			
   		</div>
 		</div>
 		
@@ -58,11 +66,17 @@
 		<div class="footer text-center">AliakseiSasnouski &copy; 2015</div>
 	</div>
 	
-	<script type="text/javascript">
-		function divPosition()
-		{    
-			document.getElementById("sent-message-area").style.left = screen.availWidth/2 - document.getElementById("sent-message-area").offsetWidth/2 + "px";
-		}
-	</script>
+	
+	
+	
+	<div id="parent_popup">
+		<div id="popup">
+			<h1>Error!</h1>
+			<p>Сервер не найден.</p>
+			
+			<a class="close" title="Закрыть" onclick="document.getElementById('parent_popup').style.display='none';"></a>
+		</div>
+	</div>
+	
 </body>
 </html> 
