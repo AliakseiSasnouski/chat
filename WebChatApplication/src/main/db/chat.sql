@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: chat
 -- ------------------------------------------------------
--- Server version	5.6.24
+-- Server version	5.6.24-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,11 +25,12 @@ DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
   `id` int(11) NOT NULL,
   `text` varchar(255) DEFAULT NULL,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +39,7 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-INSERT INTO `messages` VALUES (1,'Hello boy',0),(10,'fgllshjdjdjdj',1),(20,'fngbjkbfdkjgj',2),(30,'fngbjkbfdkjgj',3),(40,'hjfjhhjbv',4),(50,'ggggggggggggggv',5),(60,'huieigbuibbu',6),(70,'inln nn nf',7),(80,'aaaaaassdsj',8),(90,'okokokokokoko',9),(100,'oko',10);
+INSERT INTO `messages` VALUES (1,'hello','2015-05-17 18:30:32',1),(2,'hello','2015-05-17 18:31:18',5),(3,'lfc is the best','2015-05-17 18:32:03',5),(4,'Isnt it?','2015-05-17 18:36:16',5),(5,'YEAH','2015-05-17 18:36:36',3),(6,'YEAH','2015-05-17 18:36:46',4),(7,'come on lads','2015-05-17 18:37:09',8),(8,'lets win it','2015-05-17 18:37:30',2),(9,'here we go','2015-05-17 18:38:20',6),(10,'lets do that for SG','2015-05-17 18:38:47',9),(11,'lets do that for SG','2015-05-17 18:39:07',1),(21,'YEAHH','2015-05-17 18:39:27',4);
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,10 +51,10 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +63,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (0,'Misha'),(1,'Sasha'),(2,'Vitok'),(3,'Mitya'),(4,'Antoxa'),(5,'Uvasya'),(6,'Veronica'),(7,'Vera'),(8,'Olya'),(9,'Poly'),(10,'Tom');
+INSERT INTO `users` VALUES (1,'anton'),(2,'steven'),(3,'simon'),(4,'raul'),(5,'daniel'),(6,'dejan'),(7,'luis'),(8,'glen'),(9,'rickie'),(10,'philippe');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -75,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-27 13:19:44
+-- Dump completed on 2015-06-01 17:29:39
